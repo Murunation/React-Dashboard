@@ -4,20 +4,24 @@ import { useNavigate } from "react-router-dom";
 
 export default function SideMenu() {
   const navigate = useNavigate();
-  const urlChangeHandler = () => {
+  const urlProduct = () => {
     navigate("products");
   };
   const urlHome = () => {
     navigate("/");
   };
-  const urlUsers = () => {
-    navigate("users");
+  const urlOrders = () => {
+    navigate("orders");
+  };
+  const urlClients = () => {
+    navigate("clients");
   };
   return (
     <div className="sideMenu">
-      <button onClick={urlHome}>Home</button>
-      <button onClick={urlChangeHandler}>Products</button>
-      <button onClick={urlUsers}>Users</button>
+      <button onClick={urlHome}>Хянах самбар</button>
+      <button onClick={urlProduct}>Бүтээгдэхүүнүүд</button>
+      <button onClick={urlOrders}>Захиалгууд</button>
+      <button onClick={urlClients}>Хэрэглэгчид</button>
     </div>
   );
 }

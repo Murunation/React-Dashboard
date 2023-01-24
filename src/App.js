@@ -3,8 +3,9 @@ import Header from "./component/Header";
 import SideMenu from "./component/SideMenu";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
-import Users from "./pages/Users";
+import Orders from "./pages/Orders";
 import "./style/App.css";
+import Clients from "./pages/Clients";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/users" element={<Users />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/clients" element={<Clients />} />
         </Routes>
       </div>
     </div>

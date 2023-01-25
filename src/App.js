@@ -14,7 +14,7 @@ function App() {
       <div className="main">
         <SideMenu />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/control" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/clients" element={<Clients />} />

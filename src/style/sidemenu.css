@@ -2,4 +2,13 @@
   width: 20%;
   min-height: 95vh;
   background-color: darkolivegreen;
+  
+}
+.Active{
+  background-color: #003585;
+ 
+}
+
+.inactive{
+  background-color: #FCFCFC;
 }

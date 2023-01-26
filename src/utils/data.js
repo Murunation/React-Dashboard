@@ -17,6 +17,16 @@ export const paths = [
     {
         name: "Хэрэглэгчид",
         url: "/clients",
+        image: "https://cdn-icons-png.flaticon.com/512/1077/1077063.png",
+    },
+    {
+        name: "Модератор",
+        url: "/moderators",
         image: "https://cdn-icons-png.flaticon.com/128/3126/3126649.png",
+    },
+    {
+        name: "Тохиргоо",
+        url: "/settings",
+        image: "https://cdn-icons-png.flaticon.com/512/1086/1086581.png",
     },
 ];

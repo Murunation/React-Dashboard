@@ -4,8 +4,7 @@
 .main {
   display: flex;
 }
-.container{
-  width: 100%;
-  max-width: 1300px;
+.container {
+  width: 90%;
   margin: 0 auto;
 }

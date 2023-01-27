@@ -6,10 +6,11 @@ import Products from "./pages/Products";
 import Orders from "./pages/Orders";
 import "./style/App.css";
 import Clients from "./pages/Clients";
-import axios from "axios"
+import axios from "axios";
 import { useEffect, useState } from "react";
 import Moderator from "./pages/Moderator";
 import Settings from "./pages/Settings";
+
 function App() {
   const [product, setProduct] = useState("");
   const [users, setUsers] = useState("");
@@ -49,12 +50,15 @@ function App() {
       <div className="main">
         <SideMenu />
         <Routes>
-          <Route path="/control" element={<Home test={product} />}/>
-          <Route path="/products" element={<Products test={product}/>} />
+          <Route path="/control" element={<Home test={product} />} />
+          <Route path="/products" element={<Products test={product} />} />
           <Route path="/orders" element={<Orders order={orders} />} />
-          <Route path="/clients" element={<Clients user={users}/>} />
-          <Route path="/moderators" element={<Moderator moderator={moderators}/>}/>
-          <Route path="/settings" element={<Settings/>}/> 
+          <Route path="/clients" element={<Clients user={users} />} />
+          <Route
+            path="/moderators"
+            element={<Moderator moderator={moderators} />}
+          />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
     </div>

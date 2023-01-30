@@ -4,6 +4,8 @@ import EditIcon from "../component/icons/Edit";
 import "../style/products.css";
 import { paths } from "../utils/data";
 import AddButton from "../component/subcomp/AddButton";
+import Dropdown from 'react-bootstrap/Dropdown';
+
 
 export default function Products(prop) {
   const { test } = prop;
@@ -51,9 +53,21 @@ export default function Products(prop) {
                 <p className="prod-detail">{products.stock}</p>
                 <p className="prod-detail">{products.sale}</p>
                 <div className="prod-detail">{products.category}</div>
-                <button>
+                <Dropdown>
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                    <EditIcon />
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                      <Dropdown.Item href="#/action-1">Өөрчлөх</Dropdown.Item>
+                      <Dropdown.Item href="#/action-2">Устгах</Dropdown.Item>
+                      <Dropdown.Item href="#/action-3">Вебсайтаас нуух</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+                {/* <button>
+
                   <EditIcon />
-                </button>
+                </button> */}
               </div>
             ))}
         </div>

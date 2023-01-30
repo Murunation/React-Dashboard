@@ -1,8 +1,9 @@
 import React from "react";
-import AddProduct from "../component/icons/AddProduct";
+// import AddProduct from "../component/icons/AddProduct";
 import EditIcon from "../component/icons/Edit";
 import "../style/products.css";
 import { paths } from "../utils/data";
+import AddButton from "../component/subcomp/AddButton";
 
 export default function Products(prop) {
   const { test } = prop;
@@ -13,10 +14,13 @@ export default function Products(prop) {
           <img src={paths[1].image} alt="product-icon" />
           <p>Бүтээгдэхүүнүүд</p>
         </div>
-        <button className="add-product">
-          <AddProduct />
+        <AddButton />
+        {/* <button className="add-product"> */}
+        {/* <AddButton /> */}
+        {/* <AddProduct />
           Бараа нэмэх
-        </button>
+        </button> */}
+
         <div className="filter">
           <button>All</button>
           <input type="search" placeholder="Хайх" />

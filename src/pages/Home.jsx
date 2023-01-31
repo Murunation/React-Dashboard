@@ -2,19 +2,26 @@ import React from "react";
 import EditIcon from "../component/icons/Edit";
 import ImageIcon from "../component/icons/ImageIcon";
 import "../style/home.css";
-import {paths} from "../utils/data"
+import Dropdown from "react-bootstrap/Dropdown";
+import { paths } from "../utils/data";
+import axios from "axios";
 
 export default function Home(prop) {
-  const {test} = prop
-  return <div className="dashboard-content">
-    <div className="dashboard">
+  const { test } = prop;
+  function deleteHandler(id) {
+    axios.delete(`http://localhost:4000/products/${id}`);
+    location.reload();
+  }
+  return (
+    <div className="dashboard-content">
+      <div className="dashboard">
         <div className="dashboard-bar">
           <img src={paths[0].image} alt="product-icon" />
           <p>Хянах самбар</p>
         </div>
         <div className="later-sold">
           <p>Сүүлд зарагдсан</p>
-          <ImageIcon/>
+          <ImageIcon />
         </div>
         <div className="dash-info">
           <p>Зураг</p>
@@ -23,22 +30,40 @@ export default function Home(prop) {
           <p>Үлдэгдэл</p>
           <p>Хямдрал %</p>
           <p>Категори</p>
-          <button><EditIcon/></button>
+          <button>
+            <EditIcon />
+          </button>
         </div>
-    {test && test.map((products, index) => (
-          <div key={index} className="product-list">
-            <img src={products.image} alt="" />
-            <p className="list-name">{products.name}</p>
-            <p>{products.price}</p>
-            <p>{products.stock}</p>
-            <p>{products.sale}</p>
-            <div className="product-category">
-              {products.category}
+        {test &&
+          test.map((products, index) => (
+            <div key={index} className="product-list">
+              <img src={products.image} alt="" />
+              <p className="list-name">{products.name}</p>
+              <p>{products.price}</p>
+              <p>{products.stock}</p>
+              <p>{products.sale}</p>
+              <div className="product-category">{products.category}</div>
+              <Dropdown>
+                <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                  <EditIcon />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Өөрчлөх</Dropdown.Item>
+                  <Dropdown.Item
+                    href="#/action-2"
+                    onClick={() => deleteHandler(products.id)}
+                  >
+                    Устгах
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">
+                    Вебсайтаас нуух
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
-            <button><EditIcon/></button>
-          </div>
-        ))}
+          ))}
+      </div>
     </div>
-    
-  </div>;
+  );
 }

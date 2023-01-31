@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import AddProduct from "../icons/AddProduct";
 import "../../style/substyle/addbutton.css";
+import axios from "axios";
 
 export default function Example() {
   const [show, setShow] = useState(false);
@@ -37,6 +38,8 @@ export default function Example() {
       category,
       brand,
     };
+    axios.post("http://localhost:4000/product", proObject);
+    location.reload();
     console.log(proObject);
     // handleClose;
   }
@@ -131,6 +134,7 @@ export default function Example() {
                   <select name="productBrand">
                     <option>SAMSUNG</option>
                     <option>LG</option>
+                    <option>IPHONE</option>
                   </select>
                 </div>
               </div>

@@ -4,11 +4,15 @@ import EditIcon from "../component/icons/Edit";
 import "../style/products.css";
 import { paths } from "../utils/data";
 import AddButton from "../component/subcomp/AddButton";
-import Dropdown from 'react-bootstrap/Dropdown';
-
+import Dropdown from "react-bootstrap/Dropdown";
+import axios from "axios";
 
 export default function Products(prop) {
   const { test } = prop;
+  function deleteHandler(id) {
+    axios.delete(`http://localhost:4000/products/${id}`);
+    location.reload();
+  }
   return (
     <div className="product">
       <div className="product-content">
@@ -59,9 +63,16 @@ export default function Products(prop) {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                      <Dropdown.Item href="#/action-1">Өөрчлөх</Dropdown.Item>
-                      <Dropdown.Item href="#/action-2">Устгах</Dropdown.Item>
-                      <Dropdown.Item href="#/action-3">Вебсайтаас нуух</Dropdown.Item>
+                    <Dropdown.Item href="#/action-1">Өөрчлөх</Dropdown.Item>
+                    <Dropdown.Item
+                      href="#/action-2"
+                      onClick={() => deleteHandler(products.id)}
+                    >
+                      Устгах
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">
+                      Вебсайтаас нуух
+                    </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
                 {/* <button>

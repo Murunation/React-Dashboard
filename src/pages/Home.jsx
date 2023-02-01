@@ -27,7 +27,7 @@ export default function Home(prop) {
           <p>Зураг</p>
           <p>Барааны нэр</p>
           <p>Үнэ</p>
-          <p>Үлдэгдэл</p>
+          <p>Үлдэгдэл </p>
           <p>Хямдрал %</p>
           <p>Категори</p>
           <button>

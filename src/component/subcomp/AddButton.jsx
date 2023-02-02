@@ -5,10 +5,13 @@ import AddProduct from "../icons/AddProduct";
 import "../../style/substyle/addbutton.css";
 import axios from "axios";
 
-export default function Example() {
-  const [show, setShow] = useState(false);
+export default function Example(prop) {
+  const { show, setShow, data, setProduct } = prop;
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setProduct(undefined);
+  };
   const handleShow = () => setShow(true);
   function submitHandler(e) {
     e.preventDefault();
@@ -64,21 +67,37 @@ export default function Example() {
                     type="text"
                     placeholder="Product Name"
                     name="productName"
+                    defaultValue={data ? data.name : ""}
                   />
                 </div>
                 <div>
                   <p>Үлдэгдэл</p>
-                  <input type="text" placeholder="Stock" name="productStock" />
+                  <input
+                    type="text"
+                    placeholder="Stock"
+                    name="productStock"
+                    defaultValue={data ? data.stock : ""}
+                  />
                 </div>
               </div>
               <div className="left-detail">
                 <div className="product-info">
                   <p>Барааны үнэ (₮)</p>
-                  <input type="text" placeholder="Price" name="productPrice" />
+                  <input
+                    type="text"
+                    placeholder="Price"
+                    name="productPrice"
+                    defaultValue={data ? data.price : ""}
+                  />
                 </div>
                 <div className="product-info">
                   <p>Хямдрал (%-иар)</p>
-                  <input type="text" placeholder="Sale" name="productSale" />
+                  <input
+                    type="text"
+                    placeholder="Sale"
+                    name="productSale"
+                    defaultValue={data ? data.sale : ""}
+                  />
                 </div>
               </div>
             </div>
@@ -87,11 +106,21 @@ export default function Example() {
               <div className="right-detail">
                 <div className="product-info">
                   <p>Багтаамж</p>
-                  <input type="text" placeholder="Capacity" name="productCap" />
+                  <input
+                    type="text"
+                    placeholder="Capacity"
+                    name="productCap"
+                    defaultValue={data ? data.cap : ""}
+                  />
                 </div>
                 <div className="product-info">
                   <p>Хүчдэл</p>
-                  <input type="text" placeholder="voltage" name="productVol" />
+                  <input
+                    type="text"
+                    placeholder="voltage"
+                    name="productVol"
+                    defaultValue={data ? data.voltage : ""}
+                  />
                 </div>
                 <div className="product-info">
                   <p>Баталгаат хугацаа</p>
@@ -99,11 +128,15 @@ export default function Example() {
                     type="text"
                     placeholder="Expire Date"
                     name="productExp"
+                    defaultValue={data ? data.expDate : ""}
                   />
                 </div>
                 <div className="product-info">
                   <h6>Категори сонгох</h6>
-                  <select name="productCategory">
+                  <select
+                    name="productCategory"
+                    defaultValue={data ? data.category : ""}
+                  >
                     <option>ЗУРАГТ, ТВ, ДЭЛГЭЦ</option>
                     <option>ГАР УТАС, ЦАГ</option>
                     <option>ГАЛ ТОГОО</option>
@@ -115,11 +148,21 @@ export default function Example() {
               <div className="left-detail">
                 <div className="product-info">
                   <p>Цахилгаан зарцуулалт</p>
-                  <input type="text" placeholder="Elect" name="productElect" />
+                  <input
+                    type="text"
+                    placeholder="Elect"
+                    name="productElect"
+                    defaultValue={data ? data.elect : ""}
+                  />
                 </div>
                 <div className="product-info">
                   <p>Хэмжээ</p>
-                  <input type="text" placeholder="Size" name="productSize" />
+                  <input
+                    type="text"
+                    placeholder="Size"
+                    name="productSize"
+                    defaultValue={data ? data.size : ""}
+                  />
                 </div>
                 <div className="product-info">
                   <p>Тайлбар</p>
@@ -127,11 +170,15 @@ export default function Example() {
                     type="text"
                     placeholder="Descripsion"
                     name="productDescrip"
+                    defaultValue={data ? data.descrip : ""}
                   />
                 </div>
                 <div className="product-info">
                   <h6>Брэнд сонгох</h6>
-                  <select name="productBrand">
+                  <select
+                    name="productBrand"
+                    defaultValue={data ? data.brand : ""}
+                  >
                     <option>SAMSUNG</option>
                     <option>LG</option>
                     <option>IPHONE</option>

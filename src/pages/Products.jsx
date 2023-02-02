@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import AddProduct from "../component/icons/AddProduct";
 import EditIcon from "../component/icons/Edit";
 import "../style/products.css";
@@ -9,6 +9,8 @@ import axios from "axios";
 
 export default function Products(prop) {
   const { test } = prop;
+  const [product, setProduct] = useState();
+  const [show, setShow] = useState(false);
   function deleteHandler(id) {
     axios.delete(`http://localhost:4000/products/${id}`);
     location.reload();
@@ -20,7 +22,12 @@ export default function Products(prop) {
           <img src={paths[1].image} alt="product-icon" />
           <p>Бүтээгдэхүүнүүд</p>
         </div>
-        <AddButton />
+        <AddButton
+          show={show}
+          setShow={setShow}
+          data={product}
+          setProduct={setProduct}
+        />
         {/* <button className="add-product"> */}
         {/* <AddButton /> */}
         {/* <AddProduct />
@@ -45,25 +52,33 @@ export default function Products(prop) {
         </div>
         <div className="products">
           {test &&
-            test.map((products, index) => (
+            test.map((product, index) => (
               <div key={index} className="product-list">
                 <img
-                  src={products.image}
+                  src={product.image}
                   alt="product-picture"
                   className="prod-detail"
                 />
-                <p className="prod-detail">{products.name}</p>
-                <p className="prod-detail">{products.price}</p>
-                <p className="prod-detail">{products.stock}</p>
-                <p className="prod-detail">{products.sale}</p>
-                <div className="prod-detail">{products.category}</div>
+                <p className="prod-detail">{product.name}</p>
+                <p className="prod-detail">{product.price}</p>
+                <p className="prod-detail">{product.stock}</p>
+                <p className="prod-detail">{product.sale}</p>
+                <div className="prod-detail">{product.category}</div>
                 <Dropdown>
                   <Dropdown.Toggle variant="primary" id="dropdown-basic">
                     <EditIcon />
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Өөрчлөх</Dropdown.Item>
+                    <Dropdown.Item
+                      href="#/action-1"
+                      onClick={() => {
+                        setProduct(product);
+                        setShow(true);
+                      }}
+                    >
+                      Өөрчлөх
+                    </Dropdown.Item>
                     <Dropdown.Item
                       href="#/action-2"
                       onClick={() => deleteHandler(products.id)}

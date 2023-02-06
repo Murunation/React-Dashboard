@@ -81,7 +81,7 @@ export default function Products(prop) {
                     </Dropdown.Item>
                     <Dropdown.Item
                       href="#/action-2"
-                      onClick={() => deleteHandler(products.id)}
+                      onClick={() => deleteHandler(product.id)}
                     >
                       Устгах
                     </Dropdown.Item>

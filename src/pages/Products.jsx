@@ -57,15 +57,15 @@ export default function Products(prop) {
                 <img
                   src={product.image}
                   alt="product-picture"
-                  className="prod-detail"
+                  className="prod-image"
                 />
                 <p className="prod-detail">{product.name}</p>
                 <p className="prod-detail">{product.price}</p>
                 <p className="prod-detail">{product.stock}</p>
                 <p className="prod-detail">{product.sale}</p>
-                <div className="prod-detail">{product.category}</div>
+                <div className="prod-category">{product.category}</div>
                 <Dropdown>
-                  <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                  <Dropdown.Toggle variant="primary" id="dropdown-btn">
                     <EditIcon />
                   </Dropdown.Toggle>
 

@@ -2,16 +2,13 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 
-
-
 const newProduct = { name: "Iphone 17", price: 210000 };
 export default function Clients(prop) {
-
-  const {user} = prop;
+  const { user } = prop;
   const [singleProd, setSingleProd] = useState(undefined);
 
   function getSingleProdHandler() {
-    fetch("http://localhost:4000/clents/1")
+    fetch("http://localhost:4000/users/1")
       .then((res) => res.json())
       .then((res) => setSingleProd(res))
       .catch((err) => {
@@ -39,12 +36,14 @@ export default function Clients(prop) {
       </button>
       <button onClick={() => deleteProductHandler("2")}>delete product</button>
     </div>
-  )
+  );
 }
-{/* <div>
+{
+  /* <div>
     {user && user.map((users, index) => (
           <div key={index}>
             <h2>{users.surname}</h2>
           </div>
         ))}
-  </div>; */}
+  </div>; */
+}

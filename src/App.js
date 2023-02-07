@@ -53,7 +53,7 @@ function App() {
           <Route path="/control" element={<Home test={product} />} />
           <Route path="/products" element={<Products test={product} />} />
           <Route path="/orders" element={<Orders order={orders} />} />
-          <Route path="/clients" element={<Clients user={users} />} />
+          <Route path="/users" element={<Clients user={users} />} />
           <Route
             path="/moderators"
             element={<Moderator moderator={moderators} />}

@@ -102,4 +102,14 @@
   display: flex;
   justify-content: center;
   padding-top: 20px;
+  font-weight: 600;
+}
+.prod-category {
+  width: 110px;
+}
+.prod-image {
+  width: 110px;
+}
+#dropdown-btn {
+  width: 62px;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 // import AddProduct from "../component/icons/AddProduct";
 import EditIcon from "../component/icons/Edit";
 import "../style/products.css";
@@ -9,12 +9,13 @@ import axios from "axios";
 
 export default function Products(prop) {
   const { test } = prop;
-  const [product, setProduct] = useState();
+  // const [product, setProduct] = useState();
   const [show, setShow] = useState(false);
   function deleteHandler(id) {
     axios.delete(`http://localhost:4000/products/${id}`);
     location.reload();
   }
+  const [product, setProduct]= useContext(MainContext);
   return (
     <div className="product">
       <div className="product-content">

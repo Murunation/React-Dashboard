@@ -7,9 +7,12 @@ import Orders from "./pages/Orders";
 import "./style/App.css";
 import Clients from "./pages/Clients";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Moderator from "./pages/Moderator";
 import Settings from "./pages/Settings";
+
+
+const MainContext = createContext();
 
 function App() {
   const [product, setProduct] = useState("");
@@ -51,7 +54,9 @@ function App() {
         <SideMenu />
         <Routes>
           <Route path="/control" element={<Home test={product} />} />
-          <Route path="/products" element={<Products test={product} />} />
+          <MainContext.Provider value={product}>
+            <Route path="/products" element={<Products/>} />
+          </MainContext.Provider>
           <Route path="/orders" element={<Orders order={orders} />} />
           <Route path="/users" element={<Clients user={users} />} />
           <Route

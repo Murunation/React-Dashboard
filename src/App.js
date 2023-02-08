@@ -11,8 +11,7 @@ import { createContext, useEffect, useState } from "react";
 import Moderator from "./pages/Moderator";
 import Settings from "./pages/Settings";
 
-
-const MainContext = createContext();
+export const MainContext = createContext();
 
 function App() {
   const [product, setProduct] = useState("");
@@ -49,23 +48,23 @@ function App() {
   console.log(moderators);
   return (
     <div className="App">
-      <Header />
-      <div className="main">
-        <SideMenu />
-        <Routes>
-          <Route path="/control" element={<Home test={product} />} />
-          <MainContext.Provider value={product}>
-            <Route path="/products" element={<Products/>} />
-          </MainContext.Provider>
-          <Route path="/orders" element={<Orders order={orders} />} />
-          <Route path="/users" element={<Clients user={users} />} />
-          <Route
-            path="/moderators"
-            element={<Moderator moderator={moderators} />}
-          />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
-      </div>
+      <MainContext.Provider value={{ product, users, orders, moderators }}>
+        <Header />
+        <div className="main">
+          <SideMenu />
+          <Routes>
+            <Route path="/control" element={<Home />} />
+            <Route path="/products" element={<Products test={product} />} />
+            <Route path="/orders" element={<Orders order={orders} />} />
+            <Route path="/users" element={<Clients user={users} />} />
+            <Route
+              path="/moderators"
+              element={<Moderator moderator={moderators} />}
+            />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </div>
+      </MainContext.Provider>
     </div>
   );
 }

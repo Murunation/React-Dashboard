@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import EditIcon from "../component/icons/Edit";
 import ImageIcon from "../component/icons/ImageIcon";
 import "../style/home.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import { paths } from "../utils/data";
 import axios from "axios";
+import { MainContext } from "../App";
 
-export default function Home(prop) {
-  const { test } = prop;
+export default function Home() {
   function deleteHandler(id) {
     axios.delete(`http://localhost:4000/products/${id}`);
     location.reload();
   }
+  const { product } = useContext(MainContext);
   return (
     <div className="dashboard-content">
       <div className="dashboard">
@@ -34,8 +35,8 @@ export default function Home(prop) {
             <EditIcon />
           </button>
         </div>
-        {test &&
-          test.map((products, index) => (
+        {product &&
+          product.map((products, index) => (
             <div key={index} className="product-list">
               <img src={products.image} alt="" />
               <p className="list-name">{products.name}</p>

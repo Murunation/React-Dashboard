@@ -48,7 +48,18 @@ function App() {
   console.log(moderators);
   return (
     <div className="App">
-      <MainContext.Provider value={{ product, users, orders, moderators }}>
+      <MainContext.Provider
+        value={{
+          product,
+          setProduct,
+          users,
+          setUsers,
+          orders,
+          setOrders,
+          moderators,
+          setModerators,
+        }}
+      >
         <Header />
         <div className="main">
           <SideMenu />

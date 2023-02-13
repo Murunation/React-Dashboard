@@ -15,6 +15,7 @@ export default function Products(prop) {
     axios.delete(`http://localhost:4000/products/${id}`);
     location.reload();
   }
+
   // const [product, setProduct]= useContext(MainContext);
   return (
     <div className="product">

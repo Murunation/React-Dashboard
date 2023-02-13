@@ -13,6 +13,7 @@ export default function Example(prop) {
     setProduct(undefined);
   };
   const handleShow = () => setShow(true);
+
   function submitHandler(e) {
     e.preventDefault();
     let name = e.target.productName.value;
@@ -27,7 +28,9 @@ export default function Example(prop) {
     let descrip = e.target.productDescrip.value;
     let category = e.target.productCategory.value;
     let brand = e.target.productBrand.value;
+    let id = data && data.id;
     let proObject = {
+      id,
       name,
       price,
       stock,
@@ -41,11 +44,20 @@ export default function Example(prop) {
       category,
       brand,
     };
-    axios.post("http://localhost:4000/product", proObject);
+
+    // console.log(data.id);
+    if (data) {
+      axios.put(`http://localhost:4000/products/${data.id}`, proObject);
+      console.log(proObject);
+    } else {
+      axios.post("http://localhost:4000/product", proObject);
+
+      console.log(proObject);
+    }
     location.reload();
-    console.log(proObject);
     // handleClose;
   }
+
   return (
     <div className="main-button">
       <Button variant="primary" className="add-button" onClick={handleShow}>

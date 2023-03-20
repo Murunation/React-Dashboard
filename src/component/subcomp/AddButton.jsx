@@ -57,6 +57,10 @@ export default function Example(prop) {
     location.reload();
     // handleClose;
   }
+  function uploadHandler() {
+    console.log("Uploading");
+    fetch("http://localhost:3000/file").then((res) => console.log(res));
+  }
 
   return (
     <div className="main-button">
@@ -74,6 +78,12 @@ export default function Example(prop) {
             <div className="add-detail">
               <div className="right-detail">
                 <div className="product-info">
+                  <input type="file" />
+                  <input
+                    type="button"
+                    value={"Upload"}
+                    onClick={uploadHandler}
+                  />
                   <p>Барааны нэр</p>
                   <input
                     type="text"

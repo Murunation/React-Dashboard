@@ -6,13 +6,14 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { paths } from "../utils/data";
 import axios from "axios";
 import { MainContext } from "../App";
+import { ProductsContext } from "../context/ProductProvider";
 
 export default function Home() {
+  const { product } = useContext(ProductsContext);
   function deleteHandler(id) {
     axios.delete(`http://localhost:4000/products/${id}`);
     location.reload();
   }
-  const { product } = useContext(MainContext);
   return (
     <div className="dashboard-content">
       <div className="dashboard">

@@ -79,6 +79,7 @@ export default function Example(prop) {
               <div className="right-detail">
                 <div className="product-info">
                   <input type="file" />
+
                   <input
                     type="button"
                     value={"Upload"}

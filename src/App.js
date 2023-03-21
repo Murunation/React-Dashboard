@@ -14,68 +14,51 @@ import Settings from "./pages/Settings";
 export const MainContext = createContext();
 
 function App() {
-  const [product, setProduct] = useState("");
-  const [users, setUsers] = useState("");
-  const [orders, setOrders] = useState("");
-  const [moderators, setModerators] = useState("");
+  // const [users, setUsers] = useState("");
+  // const [orders, setOrders] = useState("");
+  // const [moderators, setModerators] = useState("");
   //Products data
-  useEffect(() => {
-    axios
-      .get("http://localhost:4000/products")
-      .then((products) => setProduct(products.data));
-  }, []);
-  console.log(product);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:4000/products")
+  //     .then((products) => setProduct(products.data));
+  // }, []);
+  // console.log(product);
   //Users Data
-  useEffect(() => {
-    axios
-      .get("http://localhost:4000/users")
-      .then((user) => setUsers(user.data));
-  }, []);
-  console.log(users);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:4000/users")
+  //     .then((user) => setUsers(user.data));
+  // }, []);
+  // console.log(users);
   //Orders Data
-  useEffect(() => {
-    axios
-      .get("http://localhost:4000/orders")
-      .then((order) => setOrders(order.data));
-  }, []);
-  console.log(orders);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:4000/orders")
+  //     .then((order) => setOrders(order.data));
+  // }, []);
+  // console.log(orders);
   //Moderator Data
-  useEffect(() => {
-    axios
-      .get("http://localhost:4000/moderators")
-      .then((modearator) => setModerators(modearator.data));
-  }, []);
-  console.log(moderators);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:4000/moderators")
+  //     .then((modearator) => setModerators(modearator.data));
+  // }, []);
+  // console.log(moderators);
   return (
     <div className="App">
-      <MainContext.Provider
-        value={{
-          product,
-          setProduct,
-          users,
-          setUsers,
-          orders,
-          setOrders,
-          moderators,
-          setModerators,
-        }}
-      >
-        <Header />
-        <div className="main">
-          <SideMenu />
-          <Routes>
-            <Route path="/control" element={<Home />} />
-            <Route path="/products" element={<Products test={product} />} />
-            <Route path="/orders" element={<Orders order={orders} />} />
-            <Route path="/users" element={<Clients user={users} />} />
-            <Route
-              path="/moderators"
-              element={<Moderator moderator={moderators} />}
-            />
-            <Route path="/settings" element={<Settings />} />
-          </Routes>
-        </div>
-      </MainContext.Provider>
+      <Header />
+      <div className="main">
+        <SideMenu />
+        <Routes>
+          <Route path="/control" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/users" element={<Clients />} />
+          <Route path="/moderators" element={<Moderator />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
+      </div>
     </div>
   );
 }

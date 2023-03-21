@@ -7,6 +7,7 @@ import axios from "axios";
 
 export default function Example(prop) {
   const { show, setShow, data, setProduct } = prop;
+  const [image, setImage] = useState();
 
   const handleClose = () => {
     setShow(false);
@@ -62,6 +63,8 @@ export default function Example(prop) {
     fetch("http://localhost:3000/file").then((res) => console.log(res));
   }
 
+  function changeHandler() {}
+
   return (
     <div className="main-button">
       <Button variant="primary" className="add-button" onClick={handleShow}>
@@ -78,7 +81,7 @@ export default function Example(prop) {
             <div className="add-detail">
               <div className="right-detail">
                 <div className="product-info">
-                  <input type="file" />
+                  <input type="file" onChange={changeHandler} />
 
                   <input
                     type="button"

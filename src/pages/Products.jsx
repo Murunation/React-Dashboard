@@ -13,12 +13,10 @@ export default function Products(prop) {
   // console.log(product && product);
   const { test } = prop;
   const [show, setShow] = useState(false);
-  function deleteHandler(id) {
-    axios.delete(`http://localhost:4000/products/${id}`);
-    location.reload();
+  function deleteHandler() {
+    axios.delete(`http://localhost:4000/deleteProduct`).then((res) => {});
   }
 
-  // const [product, setProduct]= useContext(MainContext);
   return (
     <div className="product">
       <div className="product-content">
@@ -45,6 +43,7 @@ export default function Products(prop) {
           <p className="prod-detail">Үлдэгдэл</p>
           <p className="prod-detail">Хямдрал %</p>
           <p className="prod-detail">Категори</p>
+          <p className="prod-detail">Brand</p>
           <button>
             <EditIcon />
           </button>
@@ -63,6 +62,7 @@ export default function Products(prop) {
                 <p className="prod-detail">{product.stock}</p>
                 <p className="prod-detail">{product.sale}</p>
                 <div className="prod-category">{product.category}</div>
+                <div className="prod-category">{product.brand}</div>
                 <Dropdown>
                   <Dropdown.Toggle variant="primary" id="dropdown-btn">
                     <EditIcon />

@@ -8,7 +8,7 @@ export default function MainHandlers({ children }) {
   const [count, setCount] = useState(0);
   function deleteHandler(name) {
     axios
-      .delete(`http://localhost:4000/DeleteProduct?name=${name}`)
+      .delete(`http://localhost:4000/deleteProduct?name=${name}`)
       .then((res) => res.statusText === "OK" && alert("Delete"));
   }
   useEffect(() => {

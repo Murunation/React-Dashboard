@@ -17,53 +17,32 @@ export default function Example(prop) {
 
   function submitHandler(e) {
     e.preventDefault();
-    let name = e.target.productName.value;
-    let price = e.target.productPrice.value;
-    let stock = e.target.productStock.value;
-    let sale = e.target.productSale.value;
-    let cap = e.target.productCap.value;
-    let elect = e.target.productElect.value;
-    let voltage = e.target.productVol.value;
-    let size = e.target.productSize.value;
-    let expDate = e.target.productExp.value;
-    let descrip = e.target.productDescrip.value;
-    let category = e.target.productCategory.value;
-    let brand = e.target.productBrand.value;
-    let id = data && data.id;
-    let proObject = {
-      id,
-      name,
-      price,
-      stock,
-      sale,
-      cap,
-      elect,
-      voltage,
-      size,
-      expDate,
-      descrip,
-      category,
-      brand,
+
+    const product = {
+      name: e.target.name.value,
+      price: e.target.price.value,
+      stock: e.target.stock.value,
+      sale: e.target.sale.value,
+      category: e.target.category.value,
+      description: e.target.description.value,
+      brand: e.target.brand.value,
+      created_date: e.target.created_date.value,
+      update_date: e.target.update_date.value,
     };
 
-    // console.log(data.id);
-    if (data) {
-      axios.put(`http://localhost:4000/products/${data.id}`, proObject);
-      console.log(proObject);
-    } else {
-      axios.post("http://localhost:4000/product", proObject);
+    const productForm = new FormData();
 
-      console.log(proObject);
-    }
+    productForm.append("file", e.target.image.files[0]);
+    productForm.append("details", JSON.stringify(product));
+
+    fetch("http://localhost:4000/addproduct", {
+      method: "POST",
+      mode: "cors",
+      body: productForm,
+    });
+    console.log(e.target.image.files[0]);
     location.reload();
-    // handleClose;
   }
-  function uploadHandler() {
-    console.log("Uploading");
-    fetch("http://localhost:3000/file").then((res) => console.log(res));
-  }
-
-  function changeHandler() {}
 
   return (
     <div className="main-button">
@@ -81,18 +60,14 @@ export default function Example(prop) {
             <div className="add-detail">
               <div className="right-detail">
                 <div className="product-info">
-                  <input type="file" onChange={changeHandler} />
-
-                  <input
-                    type="button"
-                    value={"Upload"}
-                    onClick={uploadHandler}
-                  />
+                  <input type="file" name="image" />
+                  {/* onChange={changeHandler} */}
+                  <input type="button" value={"Upload"} />
                   <p>Барааны нэр</p>
                   <input
                     type="text"
                     placeholder="Product Name"
-                    name="productName"
+                    name="name"
                     defaultValue={data ? data.name : ""}
                   />
                 </div>
@@ -101,7 +76,7 @@ export default function Example(prop) {
                   <input
                     type="text"
                     placeholder="Stock"
-                    name="productStock"
+                    name="stock"
                     defaultValue={data ? data.stock : ""}
                   />
                 </div>
@@ -112,7 +87,7 @@ export default function Example(prop) {
                   <input
                     type="text"
                     placeholder="Price"
-                    name="productPrice"
+                    name="price"
                     defaultValue={data ? data.price : ""}
                   />
                 </div>
@@ -121,7 +96,7 @@ export default function Example(prop) {
                   <input
                     type="text"
                     placeholder="Sale"
-                    name="productSale"
+                    name="sale"
                     defaultValue={data ? data.sale : ""}
                   />
                 </div>
@@ -131,36 +106,9 @@ export default function Example(prop) {
             <div className="add-detail">
               <div className="right-detail">
                 <div className="product-info">
-                  <p>Багтаамж</p>
-                  <input
-                    type="text"
-                    placeholder="Capacity"
-                    name="productCap"
-                    defaultValue={data ? data.cap : ""}
-                  />
-                </div>
-                <div className="product-info">
-                  <p>Хүчдэл</p>
-                  <input
-                    type="text"
-                    placeholder="voltage"
-                    name="productVol"
-                    defaultValue={data ? data.voltage : ""}
-                  />
-                </div>
-                <div className="product-info">
-                  <p>Баталгаат хугацаа</p>
-                  <input
-                    type="text"
-                    placeholder="Expire Date"
-                    name="productExp"
-                    defaultValue={data ? data.expDate : ""}
-                  />
-                </div>
-                <div className="product-info">
                   <h6>Категори сонгох</h6>
                   <select
-                    name="productCategory"
+                    name="category"
                     defaultValue={data ? data.category : ""}
                   >
                     <option>ЗУРАГТ, ТВ, ДЭЛГЭЦ</option>
@@ -170,41 +118,38 @@ export default function Example(prop) {
                     <option>БУСАД</option>
                   </select>
                 </div>
+                <div className="product-info">
+                  <p>Created Date</p>
+                  <input
+                    type="date"
+                    placeholder="Descripsion"
+                    name="created_date"
+                    defaultValue={data ? data.descrip : ""}
+                  />
+                </div>
+                <div className="product-info">
+                  <p>update Date</p>
+                  <input
+                    type="date"
+                    placeholder="Descripsion"
+                    name="update_date"
+                    defaultValue={data ? data.descrip : ""}
+                  />
+                </div>
               </div>
               <div className="left-detail">
-                <div className="product-info">
-                  <p>Цахилгаан зарцуулалт</p>
-                  <input
-                    type="text"
-                    placeholder="Elect"
-                    name="productElect"
-                    defaultValue={data ? data.elect : ""}
-                  />
-                </div>
-                <div className="product-info">
-                  <p>Хэмжээ</p>
-                  <input
-                    type="text"
-                    placeholder="Size"
-                    name="productSize"
-                    defaultValue={data ? data.size : ""}
-                  />
-                </div>
                 <div className="product-info">
                   <p>Тайлбар</p>
                   <input
                     type="text"
                     placeholder="Descripsion"
-                    name="productDescrip"
+                    name="description"
                     defaultValue={data ? data.descrip : ""}
                   />
                 </div>
                 <div className="product-info">
                   <h6>Брэнд сонгох</h6>
-                  <select
-                    name="productBrand"
-                    defaultValue={data ? data.brand : ""}
-                  >
+                  <select name="brand" defaultValue={data ? data.brand : ""}>
                     <option>SAMSUNG</option>
                     <option>LG</option>
                     <option>IPHONE</option>
@@ -216,7 +161,9 @@ export default function Example(prop) {
               <Button variant="secondary" onClick={handleClose}>
                 Хаах
               </Button>
-              <button type="submit">save</button>
+              <button type="submit" onClick={handleClose}>
+                save
+              </button>
             </Modal.Footer>
           </form>
         </Modal.Body>

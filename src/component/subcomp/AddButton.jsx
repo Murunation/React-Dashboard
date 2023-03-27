@@ -5,7 +5,7 @@ import AddProduct from "../icons/AddProduct";
 import "../../style/substyle/addbutton.css";
 import axios from "axios";
 
-export default function Example(prop) {
+export default function AddButton(prop) {
   const { show, setShow, data, setProduct } = prop;
   const [image, setImage] = useState();
 
@@ -41,6 +41,7 @@ export default function Example(prop) {
       body: productForm,
     });
     console.log(e.target.image.files[0]);
+    setShow(true);
     location.reload();
   }
 

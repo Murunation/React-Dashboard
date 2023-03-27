@@ -5,6 +5,7 @@ import { paths } from "../utils/data";
 import { useContext } from "react";
 import { ProductsContext } from "../context/ProductProvider";
 import AddButton from "../component/subcomp/AddButton";
+import AddUser from "../component/subcomp/AddUser";
 
 const newProduct = { name: "Iphone 17", price: 210000 };
 export default function Clients(prop) {
@@ -38,7 +39,7 @@ export default function Clients(prop) {
         <img src={paths[3].image} alt="product-icon" />
         <p>Хэрэглэгчид</p>
       </div>
-      <AddButton show={show} setShow={setShow} data={product} />
+      <AddUser />
     </div>
   );
 }

@@ -3,16 +3,13 @@ import { useState } from "react";
 import axios from "axios";
 import { paths } from "../utils/data";
 import { useContext } from "react";
-import { ProductsContext } from "../context/ProductProvider";
 import AddButton from "../component/subcomp/AddButton";
+import { UserContext } from "../context/UserContext";
 
-const newProduct = { name: "Iphone 17", price: 210000 };
-export default function Clients(prop) {
-  const { user } = prop;
-  const [singleProd, setSingleProd] = useState(undefined);
+export default function Clients() {
   const [show, setShow] = useState(false);
-  const { product } = useContext(ProductsContext);
-
+  const { user } = useContext(UserContext);
+  console.log(user);
   // function getSingleProdHandler() {
   //   fetch("http://localhost:4000/users/1")
   //     .then((res) => res.json())
@@ -38,7 +35,16 @@ export default function Clients(prop) {
         <img src={paths[3].image} alt="product-icon" />
         <p>Хэрэглэгчид</p>
       </div>
-      <AddButton show={show} setShow={setShow} data={product} />
+      <AddButton show={show} setShow={setShow} />
+      <div className="users">
+        {user &
+          user.map((user, index) => (
+            <div key={index}>
+              <p>{user && user.lastname}</p>
+              <p>{user.role}</p>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }

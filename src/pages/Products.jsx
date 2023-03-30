@@ -8,14 +8,13 @@ import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
 import { ProductsContext } from "../context/ProductProvider";
 
-export default function Products(prop) {
+export default function Products() {
   const { product } = useContext(ProductsContext);
-  // console.log(product && product);
-  const { test } = prop;
   const [show, setShow] = useState(false);
   function deleteHandler() {
     axios.delete(`http://localhost:4000/deleteProduct`).then((res) => {});
   }
+  console.log(product);
 
   return (
     <div className="product">

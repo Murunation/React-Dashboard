@@ -6,12 +6,15 @@ import { BrowserRouter } from "react-router-dom";
 import ProductsContext from "./context/ProductProvider";
 import Products from "./pages/Products";
 import MainHandlers from "./context/ProductProvider";
+import UserHandlers from "./context/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <MainHandlers>
-      <App />
+      <UserHandlers>
+        <App />
+      </UserHandlers>
     </MainHandlers>
   </BrowserRouter>
 );
